@@ -86,3 +86,4 @@ OutputStream.prototype._write = function(chunk, encoding, callback) {
 
 exports.InputStream = InputStream;
 exports.OutputStream = OutputStream;
+exports.toIBuffer = bufferUtils.toIBuffer;

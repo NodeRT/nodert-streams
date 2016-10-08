@@ -19,8 +19,9 @@ node-gyp rebuild
 
 <h3>API:</h3>
 
-* Exposes an **InputStream** object which can be initiated by passing a WinRT input stream, this object behaves like a readable nodejs stream.
-* Exposes an **OutputStream** object which can be initiated by passing a WinRT input stream, this object behaves like a writeable nodejs stream.
+* **InputStream** class - instantiated by passing a WinRT input stream in the constructor, this object behaves like a readable nodejs stream.
+* **OutputStream** class - instantiated by passing a WinRT input stream in the constructor, this object behaves like a writeable nodejs stream.
+* **toIBuffer** function - accepts a node.js buffer and returns an IBuffer object which points to the same underlying native buffer.
 
 Here is an example of using nodert-streams for piping contents of a file to stdout:
 

@@ -77,11 +77,8 @@ namespace NodeRT { namespace Buffer { namespace Utils {
 
 NAN_MODULE_INIT(init)
 {
-  if (FAILED(CoInitializeEx(nullptr, COINIT_MULTITHREADED)))
-  {
-    Nan::ThrowError(Nan::Error(NodeRT::Utils::NewString(L"error in CoInitializeEx()")));
-    return;
-  }
+  // Ignore failure (which might happen if the current thread is already initalized with STA)
+  CoInitializeEx(nullptr, COINIT_MULTITHREADED);
 
   NodeRT::Buffer::Utils::Init(target);
 }

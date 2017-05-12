@@ -42,7 +42,7 @@ storage.KnownFolders.documentsLibrary.getFileAsync('document.txt', function(err,
       return console.info(err);
     }
     // convert the winrt stream to a node.js stream
-    var nodeStream = streams.InputStream(fileStream);
+    var nodeStream = streams.InputStream(fileStream.getInputStreamAt(0));
     // pipe the stream to the stdout
     nodeStream.pipe(process.stdout);
   });

@@ -1,6 +1,6 @@
 {
   "name": "@nodert-win10/nodert-streams",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Turn WinRT streams to node.js streams",
   "main": "index.js",
   "scripts" : {

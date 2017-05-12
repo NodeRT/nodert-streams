@@ -1,10 +1,10 @@
 {
   "name": "@nodert-win10/nodert-streams",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Turn WinRT streams to node.js streams",
   "main": "index.js",
   "scripts" : {
-    "install" : "node-gyp build --msvs_version=2015"
+    "install" : "node-gyp rebuild --msvs_version=2015"
   },
   "os": [
     "win32"

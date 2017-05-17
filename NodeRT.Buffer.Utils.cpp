@@ -29,7 +29,7 @@ namespace NodeRT { namespace Buffer { namespace Utils {
   using v8::Value;
   using v8::Object;
   using v8::String;
-	using Nan::HandleScope;
+	using Nan::EscapableHandleScope;
 
   ::Windows::Storage::Streams::IBuffer^ CreateNativeBuffer(LPVOID lpBuffer, UINT32 nNumberOfBytes)
   {
@@ -43,7 +43,7 @@ namespace NodeRT { namespace Buffer { namespace Utils {
 
   static void ToIBuffer(Nan::NAN_METHOD_ARGS_TYPE info)
   {
-    HandleScope scope;
+    EscapableHandleScope scope;
 
     // the constructor if else should be auto generated
     if (info.Length() == 0)
@@ -64,8 +64,8 @@ namespace NodeRT { namespace Buffer { namespace Utils {
     ::Windows::Storage::Streams::IBuffer^ ibuffer = CreateNativeBuffer(data, (UINT32)bufferLength);
 
     Local<Value> bufferWrapper = NodeRT::CreateOpaqueWrapper(ibuffer); 
-
-    info.GetReturnValue().Set(bufferWrapper);
+    Nan::Set(bufferWrapper.As<Object>(), Nan::New<String>("__buffer__").ToLocalChecked(), buffer);
+    info.GetReturnValue().Set(scope.Escape(bufferWrapper));
   }
 
   void Init(Local<Object> exports)
